@@ -1,6 +1,6 @@
 # docker-alpine-tidyhtml
 
-A Docker image containing:
+A [Docker](https://www.docker.com/) image containing:
 
-- Alpine Linux (super small): https://alpinelinux.org/
-- `tidy`: HTML validation tool: http://www.html-tidy.org/
+- [Alpine Linux](https://alpinelinux.org/) (super small): https://hub.docker.com/_/alpine
+- `tidy`, an HTML validation tool: http://www.html-tidy.org/
