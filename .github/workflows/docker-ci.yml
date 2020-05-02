@@ -11,6 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Checkout1
 
       - uses: nelonoel/branch-name@v1
       - name: Get branch name
