@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Checkout1
       - uses: actions/checkout@v2
-      - run:  echo "Checkout1 done"
+        run:  echo "Checkout1 done"
