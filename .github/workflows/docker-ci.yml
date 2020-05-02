@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+# Trigger the workflow on push or pull request
+on: [push, pull_request]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: nelonoel/branch-name@v1
+      - name: Get branch name
+      # Use Docker `latest` tag convention
+      - run: [ "$BRANCH_NAME" == "master" ] && BRANCH_NAME=latest
+
+      - name: Print branch name
+      - run:  echo "BRANCH_NAME = $BRANCH_NAME"
+
+      - name: Build the Docker image
+        run:  docker build . --file Dockerfile --tag ap42/alpine-tidyhtml:$BRANCH_NAME
