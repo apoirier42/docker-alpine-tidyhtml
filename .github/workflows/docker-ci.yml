@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
       - name: Checkout1
-      - run:  echo "Checkout1 done"
+      - uses: actions/checkout@v2
 
-      - uses: nelonoel/branch-name@v1
       - name: Get branch name
+      - uses: nelonoel/branch-name@v1
       # Use Docker `latest` tag convention
       - run: BRANCH_NAME=`sed 's/master/latest/g' <<< $BRANCH_NAME`
 
