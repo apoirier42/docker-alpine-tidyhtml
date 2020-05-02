@@ -14,3 +14,11 @@ jobs:
 
       - name: Checkout1
         run:  echo "Checkout1 done"
+
+      - uses: nelonoel/branch-name@v1
+      - name: Get branch name
+      # Use Docker `latest` tag convention
+        run:  BRANCH_NAME=`sed 's/master/latest/g' <<< $BRANCH_NAME`
+
+      - name: Print branch name
+        run:  echo "BRANCH_NAME = $BRANCH_NAME"
