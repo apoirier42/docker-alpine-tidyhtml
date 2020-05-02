@@ -22,3 +22,6 @@ jobs:
 
       - name: Print branch name
         run:  echo "BRANCH_NAME = $BRANCH_NAME"
+
+      - name: Build the Docker image
+        run:  docker build . --file Dockerfile --tag ap42/alpine-tidyhtml:$BRANCH_NAME
