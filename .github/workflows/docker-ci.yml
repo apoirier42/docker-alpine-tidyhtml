@@ -12,14 +12,4 @@ jobs:
     steps:
       - name: Checkout1
       - uses: actions/checkout@v2
-
-      - name: Get branch name
-      - uses: nelonoel/branch-name@v1
-      # Use Docker `latest` tag convention
-      - run: BRANCH_NAME=`sed 's/master/latest/g' <<< $BRANCH_NAME`
-
-      - name: Print branch name
-      - run:  echo "BRANCH_NAME = $BRANCH_NAME"
-
-      - name: Build the Docker image
-        run:  docker build . --file Dockerfile --tag ap42/alpine-tidyhtml:$BRANCH_NAME
+      - run:  echo "Checkout1 done"
