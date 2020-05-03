@@ -1,3 +1,5 @@
+![CI](https://github.com/apoirier42/docker-alpine-tidyhtml/workflows/CI/badge.svg)
+
 # docker-alpine-tidyhtml
 
 A [Docker](https://www.docker.com/) image containing:
