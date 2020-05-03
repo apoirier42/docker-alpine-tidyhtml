@@ -19,7 +19,7 @@ jobs:
       - name: Get branch name
       # Use Docker `latest` tag convention
         run:  |
-              ::set-env name=FINAL_BRANCH_NAME::`sed 's/master/latest/g' <<< $BRANCH_NAME`
+              echo "::set-env name=FINAL_BRANCH_NAME::`sed 's/master/latest/g' <<< $BRANCH_NAME`"
               unset BRANCH_NAME
 
       - name: Print branch name
