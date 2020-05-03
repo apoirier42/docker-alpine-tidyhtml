@@ -36,3 +36,10 @@ jobs:
           # Validate that `tidy` is accessible
           docker exec atidy which tidy
           if [ $? -ne 0 ]; then exit 1; fi
+
+      # push: TODO use GitHub Packages to share image between jobs
+
+      - name: Push image to Docker Hub
+        run:  |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ap42/alpine-tidyhtml:$FINAL_BRANCH_NAME
