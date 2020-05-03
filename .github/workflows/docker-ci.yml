@@ -37,8 +37,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - continue-on-error: false
-
       - id:   Pull-image
       - name: Pull Docker image
         run:  docker pull docker.pkg.github.com/ap42/alpine-tidyhtml:$FINAL_BRANCH_NAME
