@@ -33,16 +33,14 @@ jobs:
 
   test:
 
-    needs: build
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - id:   Pull-image
-      - name: Pull Docker image
         run:  docker pull docker.pkg.github.com/ap42/alpine-tidyhtml:$FINAL_BRANCH_NAME
 
       - id:   Test-Docker-image
-      - name: Test Docker image
         run: |
 
           docker run -ti -d --rm --name atidy ap42/alpine-tidyhtml:$FINAL_BRANCH_NAME sh
