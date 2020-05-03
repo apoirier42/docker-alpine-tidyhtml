@@ -1,7 +1,7 @@
-name: CI-CD
+name: CI
 
 # Trigger the workflow on push or pull request
-on: [push, pull_request]
+on: [push]
 
 jobs:
 
@@ -36,10 +36,3 @@ jobs:
           # Validate that `tidy` is accessible
           docker exec atidy which tidy
           if [ $? -ne 0 ]; then exit 1; fi
-
-      # push: TODO use GitHub Packages to share image between jobs
-
-      - name: Push image to Docker Hub
-        run:  |
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push ap42/alpine-tidyhtml:$FINAL_BRANCH_NAME
