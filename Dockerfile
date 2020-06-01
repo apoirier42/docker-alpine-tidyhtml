@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.11
 
 MAINTAINER Alain Poirier "alain.abc@gmail.com"
 
