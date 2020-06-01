@@ -10,3 +10,4 @@ ENV LANG en_US.UTF-8
 # Install `tidy` HTML validation tool
 
 RUN apk add tidyhtml
+
