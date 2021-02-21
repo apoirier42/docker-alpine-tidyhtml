@@ -19,20 +19,20 @@ jobs:
       - name: Get branch name
       # Use Docker `latest` tag convention
         run:  |
-              echo "::set-env name=FINAL_BRANCH_NAME::`sed 's/master/latest/g' <<< $BRANCH_NAME`"
+              echo "name=FINAL_BRANCH_NAME::`sed 's/master/latest/g' <<< $BRANCH_NAME`" >> $GITHUB_ENV
               unset BRANCH_NAME
 
       - name: Print branch name
-        run:  echo "FINAL_BRANCH_NAME = $FINAL_BRANCH_NAME"
+        run:  echo "FINAL_BRANCH_NAME = ${{ env.name }}"
 
       - name: Build the Docker image
-        run:  docker build . --file Dockerfile --tag ap42/alpine-tidyhtml:$FINAL_BRANCH_NAME
+        run:  docker build . --file Dockerfile --tag ap42/alpine-tidyhtml:${{ env.name }}
 
       # test: TODO use GitHub Packages to share image between jobs
 
       - name: Test Docker image
         run: |
-             docker run -ti -d --rm --name atidy ap42/alpine-tidyhtml:$FINAL_BRANCH_NAME sh
+             docker run -ti -d --rm --name atidy ap42/alpine-tidyhtml:${{ env.name }} sh
              # Validate that `tidy` is accessible
              docker exec atidy which tidy
              if [ $? -ne 0 ]; then exit 1; fi
